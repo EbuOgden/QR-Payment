@@ -1,0 +1,58 @@
+doctype html
+html(lang='en')
+  head
+    title QR Payment
+    meta(charset='utf-8')
+    meta(name='author', content='Ebubekir Ogden')
+    meta(name='viewport', content='initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimum-scale=1.0, height=device-height, width=device-width')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
+    script(src='http://malsup.github.com/jquery.form.js')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
+    script.
+      // wait for the DOM to be loaded
+      $(document).ready(function() {
+      // bind 'myForm' and provide a simple callback function
+      $('#sendProduct')
+      .ajaxForm({
+      url : '/productRequest', // or whatever
+      success : function (response) {
+
+      $("#qrCode").attr("src", response.message);
+      $('#sendProduct')[0].reset();
+      }
+      })
+      ;
+      });
+  body
+    .container
+      .row
+        .col-lg-2.col-md-2
+          h3(style='text-align:left') A1
+          img(src='/milkyway.png', width='100px', height='100px')
+        .col-lg-2.col-md-2
+          h3(style='text-align:left') A2
+          img(src='/snickers.png', width='100px', height='75px')
+        .col-lg-2.col-md-2
+          h3(style='text-align:left') A3
+          img(src='/lays.png', width='100px', height='150px')
+      .row
+        .col-lg-2.col-md-2
+          h3(style='text-align:left') A4
+          img(src='/coke.png', width='100px', height='150px')
+        .col-lg-2.col-md-2
+          form#sendProduct(method='POST')
+            | Product Code:
+            br
+            input(type='text', name='productId', placeholder='A1')
+            input(type='hidden', name='machineId', value='d74c040e-7fb5-4f9c-bba8-6157ea260481')
+            br
+            br
+            input(type='text', name='piece', placeholder='Piece')
+            br
+            br
+            input(type='submit', value='Send')
+        .col-lg-2.col-md-2
+          h3(style='text-align:left') A5
+          img(src='/m&m.png', width='100px', height='75px')
+        .col-lg-2.col-md-2
+          img#qrCode

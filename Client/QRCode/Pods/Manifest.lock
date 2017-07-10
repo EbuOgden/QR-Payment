@@ -1,0 +1,15 @@
+PODS:
+  - Alamofire (4.2.0)
+  - SwiftQRCode (3.0.2)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.0)
+  - SwiftQRCode
+
+SPEC CHECKSUMS:
+  Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
+  SwiftQRCode: 280589699d84195c2c573011aa52f2c015c31c34
+
+PODFILE CHECKSUM: 68efbe2e5113805389de77e523bef9728cc0a12e
+
+COCOAPODS: 1.1.1
